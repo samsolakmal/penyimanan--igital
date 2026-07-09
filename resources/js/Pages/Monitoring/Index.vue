@@ -20,9 +20,11 @@ const deleteUser = (user) => {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#dc2626',
-        cancelButtonColor: '#6b7280',
+        cancelButtonColor: '#475569',
         confirmButtonText: 'Ya, Hapus!',
         cancelButtonText: 'Batal',
+        background: '#1e293b',
+        color: '#f8fafc'
     }).then((result) => {
         if (result.isConfirmed) {
             router.delete(`/users/${user.id}`, { preserveScroll: true });
@@ -37,27 +39,27 @@ const deleteUser = (user) => {
         <div class="py-8">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="mb-6">
-                    <h1 class="text-3xl font-bold text-gray-900">Monitoring Akun</h1>
-                    <p class="mt-1 text-sm text-gray-600">Dashboard monitoring dan manajemen akun sistem</p>
+                    <h1 class="text-3xl font-extrabold text-white">Monitoring Akun</h1>
+                    <p class="mt-1 text-sm text-slate-400">Dashboard monitoring dan manajemen akun sistem</p>
                 </div>
 
                 <!-- Statistik Cards -->
                 <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                        <p class="text-sm font-medium text-gray-600">Total Akun</p>
-                        <p class="mt-2 text-3xl font-bold text-gray-900">{{ statistik.total }}</p>
+                    <div class="rounded-xl border border-slate-700 bg-slate-800 p-6 shadow-xl shadow-black/20">
+                        <p class="text-sm font-medium text-slate-400">Total Akun</p>
+                        <p class="mt-2 text-3xl font-bold text-white">{{ statistik.total }}</p>
                     </div>
-                    <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                        <p class="text-sm font-medium text-gray-600">Super Admin</p>
-                        <p class="mt-2 text-3xl font-bold text-red-600">{{ statistik.super_admin }}</p>
+                    <div class="rounded-xl border border-slate-700 bg-slate-800 p-6 shadow-xl shadow-black/20">
+                        <p class="text-sm font-medium text-slate-400">Super Admin</p>
+                        <p class="mt-2 text-3xl font-bold text-red-400">{{ statistik.super_admin }}</p>
                     </div>
-                    <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                        <p class="text-sm font-medium text-gray-600">Admin</p>
-                        <p class="mt-2 text-3xl font-bold text-blue-600">{{ statistik.admin }}</p>
+                    <div class="rounded-xl border border-slate-700 bg-slate-800 p-6 shadow-xl shadow-black/20">
+                        <p class="text-sm font-medium text-slate-400">Admin</p>
+                        <p class="mt-2 text-3xl font-bold text-blue-400">{{ statistik.admin }}</p>
                     </div>
-                    <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                        <p class="text-sm font-medium text-gray-600">User Biasa</p>
-                        <p class="mt-2 text-3xl font-bold text-gray-600">{{ statistik.user }}</p>
+                    <div class="rounded-xl border border-slate-700 bg-slate-800 p-6 shadow-xl shadow-black/20">
+                        <p class="text-sm font-medium text-slate-400">User Biasa</p>
+                        <p class="mt-2 text-3xl font-bold text-slate-300">{{ statistik.user }}</p>
                     </div>
                 </div>
 
@@ -65,30 +67,30 @@ const deleteUser = (user) => {
                 <div class="mb-4">
                     <div class="relative max-w-md">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                            <i class="fas fa-search text-gray-400"></i>
+                            <i class="fas fa-search text-slate-500"></i>
                         </div>
-                        <input v-model="searchQuery" type="text" placeholder="Cari nama atau email..." class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+                        <input v-model="searchQuery" type="text" placeholder="Cari nama atau email..." class="block w-full rounded-lg border border-slate-700 bg-slate-800 py-2.5 pl-10 pr-3 text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
                     </div>
                 </div>
 
                 <!-- Table -->
-                <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
+                <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-xl shadow-black/20">
+                    <table class="min-w-full divide-y divide-slate-700">
+                        <thead class="bg-slate-900/50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-700">Nama</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-700">Email</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-700">Role</th>
-                                <th class="px-6 py-3 text-right text-xs font-semibold uppercase text-gray-700">Aksi</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-400">Nama</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-400">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-400">Role</th>
+                                <th class="px-6 py-3 text-right text-xs font-semibold uppercase text-slate-400">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr v-for="user in filteredUsers" :key="user.id" class="hover:bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">{{ user.name }}</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">{{ user.email }}</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 capitalize">{{ user.role }}</td>
+                        <tbody class="divide-y divide-slate-700 bg-slate-800">
+                            <tr v-for="user in filteredUsers" :key="user.id" class="hover:bg-slate-700/50 transition-colors">
+                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{{ user.name }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-300">{{ user.email }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-300 capitalize">{{ user.role }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 text-right text-sm">
-                                    <button @click="deleteUser(user)" class="inline-flex items-center gap-1 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-100">
+                                    <button @click="deleteUser(user)" class="inline-flex items-center gap-1 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-xs font-medium text-red-400 hover:bg-red-500/20 transition-all">
                                         <i class="fas fa-trash"></i> Hapus
                                     </button>
                                 </td>
